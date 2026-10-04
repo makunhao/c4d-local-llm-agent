@@ -1,0 +1,46 @@
+{
+  "pois": [
+    {
+      "category": "campus",
+      "description": "学校主要教学和生活区域。",
+      "lat": 34.75,
+      "lng": 113.25,
+      "name": "SIAS大学校园中心"
+    },
+    {
+      "category": "food",
+      "description": "提供多种当地特色餐饮选择。",
+      "lat": 34.76,
+      "lng": 113.26,
+      "name": "大学周边美食街"
+    },
+    {
+      "category": "transport",
+      "description": "方便学生和校内交通的公共交通站点。",
+      "lat": 34.745,
+      "lng": 113.24,
+      "name": "公交枢纽站A"
+    },
+    {
+      "category": "scenic",
+      "description": "校园附近的休闲观光区域。",
+      "lat": 34.755,
+      "lng": 113.27,
+      "name": "城市公园绿地"
+    },
+    {
+      "category": "shopping",
+      "description": "提供日常购物和生活服务设施。",
+      "lat": 34.765,
+      "lng": 113.255,
+      "name": "购物中心B"
+    },
+    {
+      "category": "campus",
+      "description": "学校主要的学术资源中心。",
+      "lat": 34.751,
+      "lng": 113.251,
+      "name": "校区图书馆"
+    }
+  ]
+}
