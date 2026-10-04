@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>SIAS University 周边地图（本地 Gemma 4 生成）</title>
+<style>
+  html, body { margin: 0; padding: 0; height: 100%; }
+  #map { width: 100%; height: 100vh; }
+  #info { position: absolute; left: 12px; top: 12px; z-index: 1000;
+          background: rgba(255,255,255,.94); padding: 10px 14px;
+          border-radius: 8px; font: 13px/1.6 -apple-system, "PingFang SC",
+          "Microsoft YaHei", sans-serif; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+  #info b { color: #d97706; }
+</style>
+<script type="text/javascript">
+    window._TMapSecurityConfig = {
+        serviceHost: 'http://127.0.0.1:__WB_HTTP_PORT__/_TMapService/_wbt/__WB_TMAP_SECRET__',
+    };
+</script>
+<script src="https://map.qq.com/api/gljs?v=1.exp"></script>
+</head>
+<body>
+<div id="map"></div>
+<div id="info"><b>郑州西亚斯学院 · 周边地点</b><br>共 6 个标记点，可缩放、可点击查看详情<br>
+地点数据由本地模型 gemma4:e2b 生成（GCJ-02）</div>
+<script>
+  const map = new TMap.Map('map', {
+    zoom: 13,
+    center: new TMap.LatLng(34.395, 113.742),
+  });
+  const pois = [
+  {
+    "category": "campus",
+    "description": "学校主要教学和生活区域。",
+    "lat": 34.75,
+    "lng": 113.25,
+    "name": "SIAS大学校园中心"
+  },
+  {
+    "category": "food",
+    "description": "提供多种当地特色餐饮选择。",
+    "lat": 34.76,
+    "lng": 113.26,
+    "name": "大学周边美食街"
+  },
+  {
+    "category": "transport",
+    "description": "方便学生和校内交通的公共交通站点。",
+    "lat": 34.745,
+    "lng": 113.24,
+    "name": "公交枢纽站A"
+  },
+  {
+    "category": "scenic",
+    "description": "校园附近的休闲观光区域。",
+    "lat": 34.755,
+    "lng": 113.27,
+    "name": "城市公园绿地"
+  },
+  {
+    "category": "shopping",
+    "description": "提供日常购物和生活服务设施。",
+    "lat": 34.765,
+    "lng": 113.255,
+    "name": "购物中心B"
+  },
+  {
+    "category": "campus",
+    "description": "学校主要的学术资源中心。",
+    "lat": 34.751,
+    "lng": 113.251,
+    "name": "校区图书馆"
+  }
+];
+  const styles = {
+    default: new TMap.MarkerStyle({
+      width: 26, height: 34,
+      anchor: { x: 13, y: 34 },
+      color: '#d97706',
+    }),
+  };
+  const geoms = pois.map((p, i) => ({
+    id: String(i),
+    styleId: 'default',
+    position: new TMap.LatLng(p.lat, p.lng),
+    properties: p,
+  }));
+  const markers = new TMap.MultiMarker({ map, styles, geometries: geoms });
+
+  const info = new TMap.InfoWindow({ map, position: map.getCenter(), offset: { x: 0, y: -36 } });
+  markers.on('click', (evt) => {
+    const p = evt.geometry.properties;
+    const icon = {"campus": "🏫", "food": "🍜", "transport": "🚌", "scenic": "🌳", "shopping": "🛍️", "other": "📍"};
+    info.open();
+    info.setPosition(evt.latLng);
+    info.setContent(
+      '<div style="font:14px/1.7 -apple-system,'PingFang SC',sans-serif;min-width:200px">'
+      + '<div style="font-weight:700;margin-bottom:4px">' + (icon[p.category] || '📍') + ' '
+      + p.name + '</div>'
+      + '<div style="color:#666">[' + p.category + ']</div>'
+      + '<div style="color:#333">' + p.description + '</div>'
+      + '<div style="color:#999;font-size:12px;margin-top:4px">'
+      + p.lat.toFixed(5) + ', ' + p.lng.toFixed(5) + '</div></div>');
+  });
+</script>
+</body>
+</html>
