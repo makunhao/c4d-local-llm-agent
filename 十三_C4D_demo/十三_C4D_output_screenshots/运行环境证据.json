@@ -1,0 +1,12 @@
+{
+  "采集时间": "2026-10-04 19:14:16",
+  "操作系统": "Windows 11",
+  "CPU": "AMD64 Family 25 Model 117 Stepping 2, AuthenticAMD",
+  "GPU": "无独立 NVIDIA GPU（CPU 推理）",
+  "Ollama版本": "ollama version is 0.31.1",
+  "模型清单": "NAME            ID              SIZE      MODIFIED      \ngemma4:e2b      b37049369adf    4.6 GB    3 minutes ago    \nqwen2.5:3b      357c53fb659c    1.9 GB    5 hours ago      \nqwen2.5:0.5b    a8b0c5157701    397 MB    18 hours ago",
+  "目标模型": "gemma4:e2b（4.6 GB，ID b37049369adf）",
+  "推理速度": "37.55 tok/s（eval_count=469, eval_duration=12.49s，原生 /api/chat 实测）",
+  "首次总耗时": "27.6 s（wall）",
+  "Agent轮次": "2 轮（第 1 轮经度越界被判无效，第 2 轮自修正通过）"
+}
